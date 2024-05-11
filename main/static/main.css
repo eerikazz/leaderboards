@@ -6,7 +6,7 @@
 
     --input: #1F1B22;
     --inputBorder: #52485B;
-    --focus: #662BB532;
+    --focus: #662BB540;
 }
 
 *{
@@ -129,6 +129,11 @@ nav {
 aside {
     grid-row: 2;
     grid-column: 1;
+
+    height: calc(100vh - (49px + 24px));
+
+    overflow-y: scroll;
+
     gap: 8px;
 }
 
@@ -284,6 +289,52 @@ aside {
     &:nth-of-type(20) { --animdel: 1050ms; }
     &:nth-of-type(21) { --animdel: 1100ms; }
 }
+
+/* ^^^ bg above ^^^ */
+/* ^^^ bg above ^^^ */
+/* ^^^ bg above ^^^ */
+
+.tableCard {
+    padding: 12px;
+    border-radius: 12px;
+
+    background-color: var(--focus);
+    backdrop-filter: blur(32px);
+    gap: 1px;
+}
+
+.tableCardHeader {
+    padding: 12px;
+    margin-bottom: 11px;
+}
+
+.table {
+    padding: 12px;
+
+    background-color: var(--primary);
+
+    display: flex;
+}
+
+.table:nth-child(2) {
+    border-radius: 12px 12px 0px 0px;
+}
+
+.table:last-child {
+    border-radius: 0px 0px 12px 12px;
+}
+
+.tableData {
+    flex: 1;
+
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text);
+}
+
+/* ^^^ table above ^^^ */
+/* ^^^ table above ^^^ */
+/* ^^^ table above ^^^ */
 
 
 @media (max-width: 512px) {

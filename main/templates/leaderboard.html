@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'country.css' %}">
+{% endblock %}
+{% block content %}
+    {% if showResults == False %}
+        <div class="container banner">
+            <h2 class="dark_title">Leaderboard</h2>
+            <h2 class="dark_text">The leaderboard will be avalible after the Grand Final</h2>
+        </div>
+    {% else %}
+
+
+
+    
+        <div class="container tableCard">
+            <div class="tableCardHeader">
+                <h2 class="cardTitle"> Leaderboard countries</h2>
+            </div>
+
+            <div class="table">
+                <p class="tableData">User</p>
+                <p class="tableData">Countries guessed right</p>
+            </div>
+
+            {% for user in most_countries_guessed %}
+                <div class="table">
+                    <p class="tableData">{{ user.user__username }}</p>
+                    <p class="tableData">{{ user.total_correct_guesses }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+
+
+        <div class="container tableCard">
+            <div class="tableCardHeader">
+                <h2 class="cardTitle"> Leaderboard score</h2>
+            </div>
+
+            <div class="table">
+                <p class="tableData">User</p>
+                <p class="tableData">Best score guessed</p>
+            </div>
+
+            {% for user in best_score_guessed %}
+                <div class="table">
+                    <p class="tableData">{{ user.user__username }}</p>
+                    <p class="tableData">{{ user.best_score }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+
+
+
+    {% endif %}
+{% endblock %}

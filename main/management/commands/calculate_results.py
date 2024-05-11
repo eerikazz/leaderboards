@@ -1,8 +1,7 @@
 # myapp/management/commands/calculate_results.py
 
 from django.core.management.base import BaseCommand
-from user.models import Bet
-from main.models import BetResult
+from main.models import Bet, BetResult
 
 class Command(BaseCommand):
     help = 'Calculate betting results after Eurovision final'

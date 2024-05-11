@@ -15,5 +15,6 @@ def global_data(request):
     return {
         'data': data,
         'isClosed': False,
-        'isMobile': isMobile
+        'isMobile': isMobile,
+        'showResults': False
     }

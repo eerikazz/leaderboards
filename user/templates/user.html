@@ -1,12 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% for bet in user_bets %}
+    
+    <div class="container tableCard">
+        <div class="tableCardHeader">
+            <h2 class="cardTitle"> Bets </h2>
+        </div>
 
-        <ul>
-            <li>{{ bet.country }}</li>
-            <li>{{ bet.bet_placement }}</li>
-            <li>{{ bet.bet_score }}</li>
-        </ul>
+        <div class="table">
+            <p class="tableData">Country</p>
+            <p class="tableData">Placement</p>
+            <p class="tableData">Score</p>
+        </div>
 
-    {% endfor %}
+        {% for bet in user_bets %}
+            <div class="table">
+                <p class="tableData">{{ bet.country }}</p>
+                <p class="tableData">{{ bet.bet_placement }}</p>
+                <p class="tableData">{{ bet.bet_score }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
 {% endblock %}

@@ -37,6 +37,14 @@
 
     {% if isMobile == False %}
         <aside class="container">
+            <a class="wrapper asideBtn" href="{% url 'leaderboard' %}">
+                <img class="asideBtnFlag" src="{% static 'assets/icon_leaderboards.svg' %}" alt="">
+                <div class="container asideBtnMetaContainer">
+                    <h4 class="metaTitle">leaderboard</h4>
+                    <span class="meta">Global results</span>
+                </div>
+            </a>
+
             {% for item in data %}
 
                 {% if item.country == page %}

@@ -6,6 +6,7 @@ from .views import *
 urlpatterns = [
     path('', index, name='index'),
     path('c/<str:country>', fetchCountry, name='fetchCountry'),
+    path('leaderboard', global_leaderboard_view, name='leaderboard'),
 ]
 
 if settings.DEBUG:

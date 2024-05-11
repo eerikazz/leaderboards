@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from main.models import Bet
@@ -17,10 +18,12 @@ def loginUser(request):
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
 
+@login_required
 def logoutUser(request):
     logout(request)
     return redirect('loginUser')
 
+@login_required
 def fetchUser(request, user_id):
 
     user = get_object_or_404(User, id=user_id)

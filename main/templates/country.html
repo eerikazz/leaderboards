@@ -55,11 +55,55 @@
                 {% endif %}
             {% endif %}
 
-            <div class="container banner">
-                <h2 class="dark_title">Leaderboard</h2>
-                <h2 class="dark_text">The leaderboard will be avalible after the Grand Final</h2>
-            </div>
+            {% if showResults == False %}
+                <div class="container banner">
+                    <h2 class="dark_title">Leaderboard</h2>
+                    <h2 class="dark_text">The leaderboard will be avalible after the Grand Final</h2>
+                </div>
+            {% else %}
 
+                <div class="container tableCard">
+                    <div class="tableCardHeader">
+                        <h2 class="cardTitle"> Leaderboard Placement</h2>
+                    </div>
+
+                    <div class="table">
+                        <p class="tableData">User</p>
+                        <p class="tableData">Bet Placement</p>
+                        <p class="tableData">Actual Placement</p>
+                        <p class="tableData">Accuracy</p>
+                    </div>
+                    {% for result in placement_results %}
+                        <div class="table">
+                            <p class="tableData">{{ result.user }}</p>
+                            <p class="tableData">{{ result.bet_placement }}</p>
+                            <p class="tableData">{{ result.actual_placement }}</p>
+                            <p class="tableData">{{ result.accuracy }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="container tableCard">
+                    <div class="tableCardHeader">
+                        <h2 class="cardTitle"> Leaderboard Score</h2>
+                    </div>
+
+                    <div class="table">
+                        <p class="tableData">User</p>
+                        <p class="tableData">Bet Score</p>
+                        <p class="tableData">Actual Score:</p>
+                        <p class="tableData">Accuracy</p>
+                    </div>
+                    {% for result in placement_results %}
+                        <div class="table">
+                            <p class="tableData">{{ result.user }}</p>
+                            <p class="tableData">{{ result.bet_score }}</p>
+                            <p class="tableData">{{ result.actual_score }}</p>
+                            <p class="tableData">{{ result.accuracy }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
         {% endif %}
     {% endfor %}
 {% endblock %}

@@ -12,15 +12,12 @@ class Country(models.Model):
 
     def __str__(self):
         return self.country
-    
+
 class Bet(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     bet_placement = models.IntegerField()
     bet_score = models.IntegerField()
-
-    def __str__(self):
-        return f"{self.user} - {self.country}"
 
 class BetResult(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -34,21 +31,20 @@ class BetResult(models.Model):
     close_guess = models.BooleanField(default=False)
 
     def calculate_accuracy(self):
-        total_bets = Bet.objects.filter(user=self.user).count()
-        correct_bets = Bet.objects.filter(
-            user=self.user,
-            country=self.country,
-            bet_placement=self.actual_placement
-        ).count()
+        total_countries = Country.objects.count()
 
-        if total_bets == 0:
-            self.accuracy = 0.0
+        if self.bet_placement == self.actual_placement:
+            self.correct_guess = True
+            self.accuracy = 100.0
         else:
-            self.accuracy = (correct_bets / total_bets) * 100.0
+            difference = abs(self.actual_placement - self.bet_placement)
+            max_difference = total_countries - 1  # Since placement starts from 1
+            self.accuracy = ((max_difference - difference) / max_difference) * 100.0
 
+            if self.accuracy > 0:
+                self.close_guess = True
 
     def save(self, *args, **kwargs):
-        # Override save method to automatically calculate accuracy before saving
         self.calculate_accuracy()
         super().save(*args, **kwargs)
 

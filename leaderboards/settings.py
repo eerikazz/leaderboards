@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-a9s2do8i171#g3b76hyiex_xoo20bfj(6hp-35!@gk=f#g)_&q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.7.198', '127.0.0.1']
+# ALLOWED_HOSTS = ['192.168.7.198', '127.0.0.1']
+ALLOWED_HOSTS = ['eerikazz.pythonanywhere.com']
 
 
 # Application definition
@@ -120,6 +121,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = '/home/eerikazz/leaderboards/static/'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -128,3 +131,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = '/u/'
