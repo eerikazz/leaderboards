@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#662BB5">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    {% block style %}{% endblock %}
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- font -->
+
+    <title>Leaderboards</title>
+</head>
+<body>
+    <nav class="wrapper">
+        {% if isMobile == False %}
+            <a class="wrapper navBtn" href="">
+                <img class="navBtnIcon" src="{% static 'assets/icon_20_euroheart.svg' %}" alt="">
+            </a>
+        {% else %}
+            <a class="wrapper navBtn" href="{% url 'index' %}">
+                <img class="navBtnIcon" src="{% static 'assets/icon_20_euroheart.svg' %}" alt="">
+            </a>
+        {% endif %}
+        <a class="wrapper navBtn mainNavBtn" href="{% url 'fetchUser' request.user.id %}">{{ request.user }}</a>
+        <a class="wrapper navBtn" href="{% url 'logout' %}">
+            <img class="navBtnIcon" src="{% static 'assets/icon_20_logout.svg' %}" alt="">
+        </a>
+    </nav>
+
+    {% if isMobile == False %}
+        <aside class="container">
+            {% for item in data %}
+
+                {% if item.country == page %}
+                    <a class="wrapper asideBtn isFocus" href="{% url 'fetchCountry' item.country %}">
+                        <img class="asideBtnFlag" src="{{ item.flag.url }}" alt="Flag">
+                        <div class="container asideBtnMetaContainer">
+                            <h4 class="metaTitle">{{ item.country }}</h4>
+                            <span class="meta">{{ item.song }}</span>
+                        </div>
+                    </a>
+                {% else %}
+                    <a class="wrapper asideBtn" href="{% url 'fetchCountry' item.country %}">
+                        <img class="asideBtnFlag" src="{{ item.flag.url }}" alt="Flag">
+                        <div class="container asideBtnMetaContainer">
+                            <h4 class="metaTitle">{{ item.country }}</h4>
+                            <span class="meta">{{ item.song }}</span>
+                        </div>
+                    </a>
+                {% endif %}
+
+            {% endfor %}
+        </aside>
+    {% endif %}
+
+    <div class="container content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <div id="bg">
+        <div class="bgLine"></div>
+        <div class="bgLine"></div>
+        <div class="bgLine"></div>
+        <div class="bgLine"></div>
+        <div class="bgLine"></div>
+        <div class="bgLine"></div>
+        <div class="bgLine"></div>
+        <div class="bgLine"></div>
+        <div class="bgLine"></div>
+        <div class="bgLine"></div>
+        <div class="bgLine"></div>
+        <div class="bgLine"></div>
+        <div class="bgLine"></div>
+        <div class="bgLine"></div>
+        <div class="bgLine"></div>
+        <div class="bgLine"></div>
+        <div class="bgLine"></div>
+        <div class="bgLine"></div>
+        <div class="bgLine"></div>
+        <div class="bgLine"></div>
+        <div class="bgLine"></div>
+    </div>
+       
+    <script src="https://code.jquery.com/jquery-4.0.0-beta.min.js"></script>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for bet in user_bets %}
+
+        <ul>
+            <li>{{ bet.country }}</li>
+            <li>{{ bet.bet_placement }}</li>
+            <li>{{ bet.bet_score }}</li>
+        </ul>
+
+    {% endfor %}
+{% endblock %}

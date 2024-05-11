@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <aside class="container">
+        {% for item in data %}
+
+            {% if item.country == page %}
+                <a class="wrapper asideBtn isFocus" href="{% url 'fetchCountry' item.country %}">
+                    <img class="asideBtnFlag" src="{{ item.flag.url }}" alt="Flag">
+                    <div class="container asideBtnMetaContainer">
+                        <h4 class="metaTitle">{{ item.country }}</h4>
+                        <span class="meta">{{ item.song }}</span>
+                    </div>
+                </a>
+            {% else %}
+                <a class="wrapper asideBtn" href="{% url 'fetchCountry' item.country %}">
+                    <img class="asideBtnFlag" src="{{ item.flag.url }}" alt="Flag">
+                    <div class="container asideBtnMetaContainer">
+                        <h4 class="metaTitle">{{ item.country }}</h4>
+                        <span class="meta">{{ item.song }}</span>
+                    </div>
+                </a>
+            {% endif %}
+
+        {% endfor %}
+    </aside>
+
+{% endblock %}

@@ -1,0 +1,84 @@
+.hero {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 24px 24px 0px 24px;
+
+    border-radius: 12px;
+
+    background-color: var(--focus);
+
+    backdrop-filter: blur(32px);
+
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.heroItem {
+    flex: 1;
+}
+
+.heroMetaCon {
+    padding-bottom: 24px;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+}
+
+.heroMetaConFlagCon {
+    align-items: center;
+    gap: 24px;
+}
+
+.heroTitle {
+    font-size: 64px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.heroFlag {
+    aspect-ratio: 1/1;
+    width: 96px;
+}
+
+.heroImg {
+    max-height: 256px;
+    object-fit: contain;
+}
+
+/* ^^^ hero above ^^^ */
+/* ^^^ hero above ^^^ */
+/* ^^^ hero above ^^^ */
+
+.banner {
+    padding: 24px;
+    height: 100%;
+
+    border-radius: 12px;
+    border: 2px dashed var(--focus);
+
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+@media (max-width: 512px) {
+    .hero {
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+
+    .heroTitle {
+        font-size: 48px;
+        font-weight: 600;
+        color: var(--text);
+    }
+
+    .heroFlag {
+        aspect-ratio: 1/1;
+        width: 60px;
+    }
+
+    .heroImg {
+        width: 100%;
+    }
+}

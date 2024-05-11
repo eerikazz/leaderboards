@@ -1,0 +1,308 @@
+:root {
+    --text: #ffffff;
+    --text-dark: #000000;
+
+    --primary: #000000;
+
+    --input: #1F1B22;
+    --inputBorder: #52485B;
+    --focus: #662BB532;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+
+    border: none;
+    text-decoration: none;
+
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    box-sizing: border-box;
+    padding: 8px;
+
+    height: 100svh;
+
+    background-color: var(--primary);
+
+    background: rgb(251,109,170);
+    background: linear-gradient(135deg, rgba(251,109,170,1) 0%, rgba(242,213,28,1) 100%);
+
+    display: grid;
+    grid-template-columns: minmax(256px, 320px) minmax(256px, 1024px);
+    grid-template-rows: max-content 1fr;
+    justify-content: center;
+    gap: 8px;
+
+    overflow-y: hidden;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.metaTitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.meta {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text);
+}
+
+.text {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text);
+}
+
+.dark_title {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.dark_text {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-dark);
+}
+
+.mainContentWrapper {
+    box-sizing: border-box;
+    gap: 8px; 
+}
+
+.content {
+    overflow-y: scroll;
+
+    grid-column: 2;
+    gap: 8px;
+}
+
+/* ^^^ presets above ^^^ */
+/* ^^^ presets above ^^^ */
+/* ^^^ presets above ^^^ */
+
+nav {
+    grid-column: 1 /span 2;
+    gap: 8px;
+}
+
+.navBtn {
+    padding: 12px;
+
+    border-radius: 12px;
+    background-color: var(--focus);
+
+    backdrop-filter: blur(32px);
+}
+
+.mainNavBtn {
+    flex-grow: 1;
+    color: var(--text);
+}
+
+.navBtnIcon {
+    aspect-ratio: 1/1;
+    width: 24px;
+}
+
+.isFocus {
+    background-color: var(--focus);
+}
+
+/* ^^^ navbar above ^^^ */
+/* ^^^ navbar above ^^^ */
+/* ^^^ navbar above ^^^ */
+
+aside {
+    grid-row: 2;
+    grid-column: 1;
+    gap: 8px;
+}
+
+.asideBtnFlag {
+    aspect-ratio: 1/1;
+    height: 48px;
+}
+
+.asideBtnMetaContainer {
+    gap: 2px;
+}
+
+.asideBtn {
+    padding: 12px;
+    border-radius: 12px;
+
+    align-items: center;
+    gap: 12px;
+}
+
+.asideBtn:hover {
+    cursor: pointer;
+    background-color: var(--focus);
+
+    backdrop-filter: blur(32px);
+}
+
+/* ^^^ aside above ^^^ */
+/* ^^^ aside above ^^^ */
+/* ^^^ aside above ^^^ */
+
+.card {
+    padding: 12px;
+
+    border-radius: 12px;
+
+    background-color: var(--focus);
+    backdrop-filter: blur(32px);
+
+    gap: 8px;
+}
+
+.cardTitle {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.cardHeader {
+    padding: 16px;
+}
+
+.gridCardBody {
+    box-sizing: border-box;
+
+    padding: 12px;
+    border-radius: 12px;
+
+    background-color: var(--primary);
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(64px, 1fr));
+    grid-template-rows: repeat(2, max-content);
+    gap: 8px;
+}
+
+.cardLabel {
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.cardInput {
+    padding: 8px 12px;
+    box-sizing: border-box;
+
+    border-radius: 8px;
+    border: 1px solid var(--inputBorder);
+
+    text-align: center;
+
+    color: var(--text);
+    background-color: var(--input);
+}
+
+.cardInput:focus {
+    outline: none;
+}
+
+.cardSubmitBtn {
+    padding: 12px;
+    border-radius: 12px;
+
+    font-size: 14px;
+
+    color: var(--text);
+    background-color: var(--primary);
+}
+
+.cardSubmitBtn:hover {
+    cursor: pointer;
+    background-color: var(--input);
+}
+
+/* ^^^ card above ^^^ */
+/* ^^^ card above ^^^ */
+/* ^^^ card above ^^^ */
+
+#bg {
+    position: fixed;
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+
+    width: 100vw;
+    height: 100vh;
+    
+    display: grid;
+    grid-template-columns: repeat(21, 1fr);
+}
+
+.bgLine {
+    animation: Y var(--animdur, 10s) var(--animdel, 0s) var(--animtf, linear) infinite;
+    background: repeating-linear-gradient(var(--deg, 0deg), var(--c1, orange), var(--c2, hotpink), var(--c3, yellow), var(--c2, hotpink), var(--c1, orange));
+    background-size: 100% 500%;
+}
+
+@keyframes Y {
+    to { background-position-y: 250%; }
+}
+
+.bgLine {
+    &:nth-of-type(1) { --animdel: 50ms; }
+    &:nth-of-type(2) { --animdel: 100ms; }
+    &:nth-of-type(3) { --animdel: 150ms; }
+    &:nth-of-type(4) { --animdel: 200ms; }
+    &:nth-of-type(5) { --animdel: 250ms; }
+    &:nth-of-type(6) { --animdel: 300ms; }
+    &:nth-of-type(7) { --animdel: 350ms; }
+    &:nth-of-type(8) { --animdel: 400ms; }
+    &:nth-of-type(9) { --animdel: 450ms; }
+    &:nth-of-type(10) { --animdel: 500ms; }
+    &:nth-of-type(11) { --animdel: 600ms; }
+    &:nth-of-type(12) { --animdel: 650ms; }
+    &:nth-of-type(13) { --animdel: 700ms; }
+    &:nth-of-type(14) { --animdel: 750ms; }
+    &:nth-of-type(15) { --animdel: 800ms; }
+    &:nth-of-type(16) { --animdel: 850ms; }
+    &:nth-of-type(17) { --animdel: 900ms; }
+    &:nth-of-type(18) { --animdel: 950ms; }
+    &:nth-of-type(19) { --animdel: 1000ms; }
+    &:nth-of-type(20) { --animdel: 1050ms; }
+    &:nth-of-type(21) { --animdel: 1100ms; }
+}
+
+
+@media (max-width: 512px) {
+    body {
+        display: grid;
+        grid-template-columns: minmax(256px, 512px);
+        grid-template-rows: max-content 1fr;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    nav {
+        grid-row: 1;
+        grid-column: 1;
+    }
+
+    .content {
+        grid-row: 2;
+        grid-column: 1;
+    }
+}
+

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'country.css' %}">
+{% endblock %}
+{% block content %}
+    {% for item in data %}
+        {% if item.country == country %}
+
+            <div class="container">
+                <div class="wrapper hero">
+                    <div class="container heroItem heroMetaCon">
+                        <div class="wrapper heroMetaConFlagCon">
+                            <img class="heroFlag" src="{{ item.flag.url }}" alt="Flag">
+                            <h2 class="heroTitle">{{ item.country }}</h2>
+                        </div>
+                        <span class="text">{{ item.song }}</span>
+                    </div>
+
+                    <div class="container heroItem">
+                        <img class="heroImg" src="{{ item.hero.url }}" alt="Hero Image">
+                    </div>
+                </div>
+            </div>
+
+            {% if isClosed == False %}
+                {% if hasVoted == True %}
+                    <div class="container card">
+                        <div class="wrapper cardHeader">
+                            <h2 class="cardTitle">Place a bet!</h2>
+                        </div>
+                        <div class="container gridCardBody">
+                                <p class="cardLabel">Placement</p>
+                                <input class="cardInput" type="number" id="id_bet_placement" name="bet_placement" required>
+
+                                <p class="cardLabel">Points</p>
+                                <input class="cardInput" type="number" id="id_bet_score" name="bet_score" required>
+                        </div>
+                    </div>
+                {% else %}
+                    <form class="container card" action="{% url 'fetchCountry' country %}" method="post">
+                        {% csrf_token %}
+                        <div class="wrapper cardHeader">
+                            <h2 class="cardTitle">Place a bet!</h2>
+                        </div>
+                        <div class="container gridCardBody">
+                                <p class="cardLabel">Placement</p>
+                                <input class="cardInput" type="number" id="id_bet_placement" name="bet_placement" required>
+
+                                <p class="cardLabel">Points</p>
+                                <input class="cardInput" type="number" id="id_bet_score" name="bet_score" required>
+                        </div>
+                        <button class="cardSubmitBtn">Bet</button>
+                    </form>
+                {% endif %}
+            {% endif %}
+
+            <div class="container banner">
+                <h2 class="dark_title">Leaderboard</h2>
+                <h2 class="dark_text">The leaderboard will be avalible after the Grand Final</h2>
+            </div>
+
+        {% endif %}
+    {% endfor %}
+{% endblock %}
